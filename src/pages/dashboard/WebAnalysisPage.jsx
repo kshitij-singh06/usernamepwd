@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Search, Globe, Shield, Activity, List, Server, TriangleAlert, CheckCircle, Clock, MapPin, Lock, FileText, Share2, Info, ChevronDown, ChevronUp, AlertCircle, Wifi, Mail, Link2, Cookie, ExternalLink } from 'lucide-react'
 import { Button } from '../../components/ui/Button'
 
-const API_BASE = 'http://localhost:5001/api/web_analyzer'
+const API_BASE = 'http://localhost:5001/api/web-analyzer'
 
 // API endpoint configuration
 const API_ENDPOINTS = [
