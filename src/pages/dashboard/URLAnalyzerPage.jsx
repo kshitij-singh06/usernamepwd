@@ -7,7 +7,7 @@ import {
 } from 'lucide-react'
 import { Button } from '../../components/ui/Button'
 
-const API_URL = 'http://localhost:5004/api/url-analyzer'
+const API_URL = 'http://localhost:5004/api/url-analyzer/analyze'
 
 // ========== HELPER COMPONENTS ==========
 
