@@ -9,6 +9,7 @@ import DashboardLayout from './layouts/DashboardLayout'
 import OverviewPage from './pages/dashboard/OverviewPage'
 import WebAnalysisPage from './pages/dashboard/WebAnalysisPage'
 import MalwareAnalysisPage from './pages/dashboard/MalwareAnalysisPage'
+import StegAnalysisPage from './pages/dashboard/StegAnalysisPage'
 
 const ReconAnalysisPage = () => (
     <div className="flex flex-col items-center justify-center h-[60vh] text-center space-y-4">
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
                     <Route index element={<OverviewPage />} />
                     <Route path="web" element={<WebAnalysisPage />} />
                     <Route path="malware" element={<MalwareAnalysisPage />} />
+                    <Route path="steg" element={<StegAnalysisPage />} />
                     <Route path="recon" element={<ReconAnalysisPage />} />
                     <Route path="settings" element={<div className="text-white p-8">Settings Panel (Placeholder)</div>} />
                 </Route>
