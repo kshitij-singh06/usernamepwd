@@ -205,11 +205,11 @@ export function HeroSection() {
                                 What We Offer
                                 <span className="w-8 h-px bg-gradient-to-l from-transparent to-neon-green" />
                             </h3>
-                            <div className="space-y-4">
+                            <div className="flex flex-col space-y-2">
                                 {offerings.map((item, index) => (
                                     <Link key={index} to={item.link}>
                                         <motion.div
-                                            className="flex items-center gap-4 p-3 rounded-xl bg-background/30 border border-transparent hover:border-neon-green/30 transition-all group"
+                                            className="flex items-center gap-4 p-4 rounded-xl bg-background/30 border border-transparent hover:border-neon-green/30 transition-all group"
                                             whileHover={{ x: 8, backgroundColor: 'rgba(0, 255, 0, 0.05)' }}
                                             initial={{ opacity: 0, x: -20 }}
                                             animate={{ opacity: 1, x: 0 }}
