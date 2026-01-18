@@ -139,8 +139,12 @@ export default function URLAnalyzerPage() {
         setResults(null)
 
         try {
-            const res = await fetch(`${API_URL}?url=${encodeURIComponent(url.trim())}`, {
-                method: 'POST'
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url.trim() })
             })
             if (!res.ok) throw new Error('Analysis failed')
             const data = await res.json()
