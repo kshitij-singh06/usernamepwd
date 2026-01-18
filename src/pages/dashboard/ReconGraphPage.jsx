@@ -309,8 +309,8 @@ export default function ReconGraphPage() {
                             <div className="grid grid-cols-2 gap-4">
                                 {/* Talos */}
                                 <div className={`p-3 rounded-lg text-center ${results.data.talos?.blacklisted
-                                        ? 'bg-red-500/10 border border-red-500/30'
-                                        : 'bg-green-500/10 border border-green-500/30'
+                                    ? 'bg-red-500/10 border border-red-500/30'
+                                    : 'bg-green-500/10 border border-green-500/30'
                                     }`}>
                                     <div className="text-xs font-mono mb-1 text-foreground/60">Cisco Talos</div>
                                     <div className={`font-bold ${results.data.talos?.blacklisted ? 'text-red-400' : 'text-green-400'}`}>
@@ -320,8 +320,8 @@ export default function ReconGraphPage() {
 
                                 {/* TOR */}
                                 <div className={`p-3 rounded-lg text-center ${results.data.tor?.is_tor_exit
-                                        ? 'bg-red-500/10 border border-red-500/30'
-                                        : 'bg-green-500/10 border border-green-500/30'
+                                    ? 'bg-red-500/10 border border-red-500/30'
+                                    : 'bg-green-500/10 border border-green-500/30'
                                     }`}>
                                     <div className="text-xs font-mono mb-1 text-foreground/60">TOR Node</div>
                                     <div className={`font-bold ${results.data.tor?.is_tor_exit ? 'text-red-400' : 'text-green-400'}`}>
@@ -333,7 +333,46 @@ export default function ReconGraphPage() {
                             {/* ThreatFox */}
                             {results.data.threatfox && (
                                 <div className="pt-2 border-t border-white/5">
-                                    <InfoRow label="ThreatFox" value={results.data.threatfox.found ? 'THREAT FOUND' : 'No Threat Found'} color={results.data.threatfox.found ? 'red-500' : 'green-400'} />
+                                    <div className="flex items-center justify-between mb-2">
+                                        <span className="text-foreground/60 text-sm">ThreatFox Analysis</span>
+                                        {results.data.threatfox.found ? (
+                                            <span className="text-xs font-bold text-red-500 bg-red-500/10 border border-red-500/20 px-2 py-0.5 rounded">DETECTED</span>
+                                        ) : (
+                                            <span className="text-xs font-bold text-green-500 bg-green-500/10 border border-green-500/20 px-2 py-0.5 rounded">CLEAN</span>
+                                        )}
+                                    </div>
+
+                                    {results.data.threatfox.found && (
+                                        <div className="space-y-2 mt-2 bg-red-500/5 p-3 rounded-lg border border-red-500/10">
+                                            <div className="grid grid-cols-2 gap-2 text-xs">
+                                                <div>
+                                                    <span className="text-foreground/40 block">Type</span>
+                                                    <span className="text-white font-mono">{results.data.threatfox.threat_type?.replace('_', ' ').toUpperCase()}</span>
+                                                </div>
+                                                <div>
+                                                    <span className="text-foreground/40 block">Malware</span>
+                                                    <span className="text-white font-mono">{results.data.threatfox.malware}</span>
+                                                </div>
+                                                <div className="col-span-2">
+                                                    <span className="text-foreground/40 block">IOC</span>
+                                                    <span className="text-white font-mono break-all">{results.data.threatfox.ioc}</span>
+                                                </div>
+                                                <div>
+                                                    <span className="text-foreground/40 block">Conf. Level</span>
+                                                    <span className="text-neon-yellow font-mono">{results.data.threatfox.confidence_level}%</span>
+                                                </div>
+                                                <div>
+                                                    <span className="text-foreground/40 block">ID</span>
+                                                    <span className="text-foreground/60 font-mono">#{results.data.threatfox.id}</span>
+                                                </div>
+                                            </div>
+                                            {results.data.threatfox.link && (
+                                                <a href={results.data.threatfox.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[10px] text-blue-400 hover:underline mt-1">
+                                                    View Report <ExternalLink size={10} />
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
                                     {results.data.threatfox.error && (
                                         <div className="text-xs text-foreground/40 mt-1 italic">API Note: {results.data.threatfox.error}</div>
                                     )}
@@ -347,8 +386,8 @@ export default function ReconGraphPage() {
                         <ResultCard title="Web Ranking" icon={Activity} color="neon-yellow">
                             <div className="space-y-2">
                                 <div className={`px-4 py-2 rounded-xl border ${results.data.tranco.found
-                                        ? 'bg-neon-yellow/10 border-neon-yellow/30'
-                                        : 'bg-white/5 border-white/10'
+                                    ? 'bg-neon-yellow/10 border-neon-yellow/30'
+                                    : 'bg-white/5 border-white/10'
                                     }`}>
                                     <div className="text-xs text-foreground/60 font-mono uppercase mb-1">Tranco Global Rank</div>
                                     <div className={`text-2xl font-bold font-mono ${results.data.tranco.found ? 'text-neon-yellow' : 'text-foreground/40'}`}>
@@ -501,7 +540,7 @@ export default function ReconGraphPage() {
                                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                     <div>
                                         <p className="text-foreground/60 text-sm mb-1">Phone Number</p>
-                                        <h2 className="text-2xl font-bold text-white font-mono">{query}</h2>
+                                        <h2 className="text-2xl font-bold text-white font-mono">{results.data.query || query}</h2>
                                     </div>
                                     <div className={`px-4 py-2 rounded-full text-sm font-mono ${results.data.phone_scan.valid
                                             ? 'bg-green-500/10 text-green-400 border border-green-500/30'
@@ -514,9 +553,11 @@ export default function ReconGraphPage() {
 
                             <ResultCard title="Phone Metadata" icon={Phone} color="neon-green">
                                 <div className="space-y-1">
-                                    <InfoRow label="Country" value={results.data.phone_scan.country} />
-                                    <InfoRow label="Carrier" value={results.data.phone_scan.carrier} />
-                                    <InfoRow label="Line Type" value={results.data.phone_scan.line_type} />
+                                    <InfoRow label="Country" value={results.data.phone_scan.country_name} />
+                                    <InfoRow label="Country Code" value={results.data.phone_scan.country_code} />
+                                    <InfoRow label="Location" value={results.data.phone_scan.location || 'N/A'} />
+                                    <InfoRow label="Carrier" value={results.data.phone_scan.carrier || 'N/A'} />
+                                    <InfoRow label="Line Type" value={results.data.phone_scan.line_type?.replace(/_/g, ' ').toUpperCase()} />
                                 </div>
                             </ResultCard>
                         </>
