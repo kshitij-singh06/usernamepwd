@@ -21,7 +21,7 @@ const tools = [
         ],
         gradient: 'from-neon-green/20 via-neon-green/5 to-transparent',
         accent: 'neon-green',
-        link: '/dashboard/web'
+        link: '/docs/web-analyzer'
     },
     {
         icon: Bug,
@@ -38,7 +38,7 @@ const tools = [
         ],
         gradient: 'from-red-500/20 via-red-500/5 to-transparent',
         accent: 'red-400',
-        link: '/dashboard/malware'
+        link: '/docs/malware-analysis'
     },
     {
         icon: Radar,
@@ -54,7 +54,7 @@ const tools = [
         ],
         gradient: 'from-neon-yellow/20 via-neon-yellow/5 to-transparent',
         accent: 'neon-yellow',
-        link: '/dashboard/recon'
+        link: '/docs/recon-analysis'
     },
     {
         icon: Eye,
@@ -70,7 +70,7 @@ const tools = [
         ],
         gradient: 'from-purple-500/20 via-purple-500/5 to-transparent',
         accent: 'purple-400',
-        link: '/dashboard/steg'
+        link: '/docs/steg-analysis'
     },
 ]
 
@@ -224,7 +224,7 @@ export function ToolsOverviewSection() {
                                             style={{ color: index === 1 ? '#f87171' : undefined }}
                                             whileHover={{ x: 4 }}
                                         >
-                                            Launch Tool
+                                            Learn More
                                             <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                                         </motion.button>
                                     </Link>
